@@ -8,9 +8,11 @@ import {
 class App extends Component {
   render() {
     return (
-      <Container>
-        <TodoContainer />
-      </Container>
+      <div className="main">
+        <Container>
+          <TodoContainer />
+        </Container>
+      </div>
     );
   }
 }

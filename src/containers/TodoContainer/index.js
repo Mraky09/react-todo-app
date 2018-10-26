@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import uuidv4 from 'uuid/v4';
 import TodoList from '../../components/TodoList';
-import AddTodo from '../../components/AddTodo';
+import AddTodo from '../AddTodo';
 
 import {
   Column,
@@ -13,30 +12,15 @@ class TodoContainer extends Component {
     super(props);
 
     this.state = {
-      todos: [],
-      newTodo: ''
+      todos: []
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
-  handleChange(event) {
-    const newTodo = {
-      title: event.target.value,
-      id: uuidv4()
-    };
+  addTodo(todo) {
     this.setState({
-      newTodo
-    });
-  }
-
-  handleSubmit(event) {
-    this.setState({
-      newTodo: {
-        title: ''
-      },
-      todos: [...this.state.todos, this.state.newTodo]
+      todos: [...this.state.todos, todo]
     });
   }
 
@@ -45,7 +29,7 @@ class TodoContainer extends Component {
     return (
       <Columns isCentered>
         <Column isSize='1/3'>
-          <AddTodo onChange={this.handleChange} onSubmit={this.handleSubmit} newTodo={newTodo} />
+          <AddTodo onChange={this.handleChange} addTodo={this.addTodo} newTodo={newTodo} />
         </Column>
         <Column>
           <TodoList todos={todos} />

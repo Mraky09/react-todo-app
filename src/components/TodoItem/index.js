@@ -1,15 +1,26 @@
 import React from 'react';
+import {
+  Box,
+  Icon
+} from 'bloomer';
 
 const TodoItem = ({ todo }) => (
-  <div className="w-full lg:flex">
-    <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-      <div className="mb-8">
-        {/* <div className="text-black font-bold text-xl mb-2">{todo.title}</div> */}
-        <p className="text-grey-darker text-base">{todo.title}</p>
-
+  <Box>
+    <article className="media">
+      <div className="media-content">
+        <div className="content">
+          <p>
+            {todo.title}
+          </p>
+        </div>
+        <nav className="level is-mobile">
+          <div className="level-left">
+            <Icon isSize="small" className="fa fa-home" />
+          </div>
+        </nav>
       </div>
-    </div>
-  </div>
+    </article>
+  </Box>
 );
 
 export default TodoItem;
