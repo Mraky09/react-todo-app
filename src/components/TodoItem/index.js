@@ -4,7 +4,7 @@ import {
   Icon
 } from 'bloomer';
 
-const TodoItem = ({ todo }) => (
+const TodoItem = ({ todo, deleteTodo }) => (
   <Box>
     <article className="media">
       <div className="media-content">
@@ -15,7 +15,7 @@ const TodoItem = ({ todo }) => (
         </div>
         <nav className="level is-mobile">
           <div className="level-left">
-            <Icon isSize="small" className="fa fa-home" />
+            <Icon isSize="small" className="fa fa-trash has-text-danger" onClick={() => deleteTodo(todo.id)} />
           </div>
         </nav>
       </div>

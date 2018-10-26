@@ -16,6 +16,7 @@ class TodoContainer extends Component {
     };
 
     this.addTodo = this.addTodo.bind(this);
+    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
   addTodo(todo) {
@@ -24,6 +25,12 @@ class TodoContainer extends Component {
     });
   }
 
+  deleteTodo(todoId) {
+    let filterTodos = this.state.todos.filter(todo => todo.id !== todoId)
+    this.setState({
+      todos: filterTodos
+    })
+  }
   render() {
     const { todos, newTodo } = this.state;
     return (
@@ -32,7 +39,7 @@ class TodoContainer extends Component {
           <AddTodo onChange={this.handleChange} addTodo={this.addTodo} newTodo={newTodo} />
         </Column>
         <Column>
-          <TodoList todos={todos} />
+          <TodoList todos={todos} deleteTodo={this.deleteTodo} />
         </Column>
       </Columns>
     );
